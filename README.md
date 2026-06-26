@@ -1,6 +1,6 @@
-# Xiaohongshu Creator Summarizer
+# Xiaohongshu Detector
 
-**小红书博主总结** — Skill for deep analysis of Xiaohongshu (RED/Little Red Book) creators' notes, covering both video and image posts.
+**小红书探测器** — Discover and evaluate quality Xiaohongshu creators in seconds. Deep content analysis of creator notes (video + image), extracting core viewpoints, engagement metrics, and content patterns.
 
 ---
 
@@ -141,7 +141,7 @@ npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer
 
 ### Overview
 
-This Skill performs **deep content analysis** of Xiaohongshu (RED / Little Red Book) creator profiles. It summarizes both **video notes** and **image notes**, extracting core viewpoints, engagement metrics, and content patterns.
+This Skill performs **discovery and evaluation** of Xiaohongshu (RED / Little Red Book) creators. Use it to quickly assess whether a creator is worth following, then dive deeper into their content.
 
 ### Use Cases
 
@@ -169,6 +169,12 @@ Restart WorkBuddy, then trigger the Skill by mentioning a Xiaohongshu creator li
 Download [SKILL.md](./SKILL.md) from this repository, place it at `~/.workbuddy/skills/xiaohongshu-creator-summarizer/SKILL.md` (create the directory if it doesn't exist), and restart WorkBuddy.
 
 > After installation, just say "summarize this Xiaohongshu creator + profile link" in WorkBuddy to auto-trigger the Skill.
+
+Alternatively, install directly via skills:
+
+```bash
+npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer  
+```
 
 ### Environment Setup
 
@@ -214,23 +220,18 @@ You **must install OpenCLI** before using this Skill:
 
 ### Use Cases
 
-#### 1. Direct Summarization
+#### 1. Quick Discovery — The Main Way to Use This
+
+Found a creator you don't know? Before spending time reading their notes:
+
+1. **Paste the link** → "Help me summarize this creator's first 10 notes"
+2. **Review in 30 seconds** → Is their content valuable to you?
+3. **Decide** → If the insights resonate, read originals deeply; if not, skip
+4. **Result** → You either found a treasure creator or saved hours of browsing
+
+#### 2. Direct Summarization
 
 Summarize all notes or the first N notes of any Xiaohongshu creator.
-
-#### 2. Pre-screening Quality Creators (Most Common)
-
-When you stumble upon a potentially valuable creator, use the Skill as a **lightweight filter** before investing time:
-
-1. **Paste the link** → Ask Agent: "Summarize this creator's first 10 notes"
-2. **Quick review** → In 30 seconds, judge: is this creator's content valuable to me?
-3. **Decide** → If the report's key insights resonate, read the originals deeply
-4. **Ignore** → If quality is mediocre, saved yourself hours of scrolling
-
-**Benefits**:
-- No need to click through notes one by one — use AI summary for **content quality assessment**
-- Quickly judge whether a "hidden gem" creator is worth following long-term
-- Ideal for competitive research, content strategy, learning path planning
 
 #### 3. Competitor Creator Matrix Analysis
 
@@ -259,10 +260,10 @@ The `outputs/` directory contains 4 real-world generated reports demonstrating r
 
 | Case | Niche | Report |
 |------|-------|--------|
-| 邹毅 | Senior Commercial Real Estate Planner | [邹毅_资深策划专家_前20条笔记深度总结.md](./outputs/邹毅_资深策划专家_前20条笔记深度总结.md) |
-| Mall先生 | Physical Retail Observation | [Mall先生_前20条笔记深度总结.md](./outputs/Mall先生_前20条笔记深度总结.md) |
-| 李晨晨商业更新观察 | Commercial Space Renewal | [李晨晨_商业更新观察_前20条笔记深度总结.md](./outputs/李晨晨_商业更新观察_前20条笔记深度总结.md) |
-| 文翰的城市更新实验室 | Urban Renewal & Commercial Design | [文翰的城市更新实验室_前20条笔记深度总结.md](./outputs/文翰的城市更新实验室_前20条笔记深度总结.md) |
+| 邹毅 | 资深策划专家 · 商业地产策划 | [邹毅_资深策划专家_前20条笔记深度总结.md](./outputs/邹毅_资深策划专家_前20条笔记深度总结.md) |
+| Mall先生 | 实体商业观察 · 购物中心分析 | [Mall先生_前20条笔记深度总结.md](./outputs/Mall先生_前20条笔记深度总结.md) |
+| 李晨晨商业更新观察 | 商业空间更新 · 城市更新 | [李晨晨_商业更新观察_前20条笔记深度总结.md](./outputs/李晨晨_商业更新观察_前20条笔记深度总结.md) |
+| 文翰的城市更新实验室 | 城市更新 · 商业空间设计 | [文翰的城市更新实验室_前20条笔记深度总结.md](./outputs/文翰的城市更新实验室_前20条笔记深度总结.md) |
 
 ---
 
