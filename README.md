@@ -16,10 +16,39 @@
 
 ### 使用场景
 
+#### 场景一：直接总结博主
+
 - 用户给出小红书博主主页链接，要求"总结所有内容"或"总结前N条笔记"
 - 博主以视频内容为主（如商业空间观察、实体商业咨询类博主）
 - 博主以图文内容为主（如行业观点、经验分享类博主）
 - 博主内容混合视频+图文，两者都需要总结
+
+#### 场景二：发现优质博主后的预筛选
+
+这是最常用的使用方式——当你偶然发现一个可能优质的博主时，先用 Skill 做**轻量预筛**，再决定是否深入阅读：
+
+1. **拿到博主链接** → 丢给 Agent："帮我总结一下这个博主的前10条笔记"
+2. **快速浏览报告** → 30 秒判断：这个博主的内容是否对我有价值？
+3. **决定深入** → 如果报告中的核心观点打动你，再看原文深入理解
+4. **决定忽略** → 如果内容质量一般，节省你逐个翻笔记的时间
+
+**优势**：
+- 避免一个个点进笔记浪费时间——先用 AI 总结做**内容质量评估**
+- 发现"宝藏博主"时能快速判断该关注多少人、内容是否可持续
+- 适合商业研究、竞品分析、学习路线规划等场景
+
+#### 场景三：竞品博主矩阵分析
+
+- 找出某个赛道 Top 10 博主 → 批量生成报告 → 横向对比内容策略
+- 比较不同博主的**方法论差异**、**爆款规律**、**变现路径**
+
+### 示例工作流
+
+```
+发现优质博主 → Agent总结前20条 → 快速评估价值 → 决定关注/深入研究
+     ↓
+    （30秒内完成）          （看报告判断）       （值得花时间再看原文）
+```
 
 ### 安装方式
 
@@ -86,6 +115,17 @@ npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer
 - **内容分类统计**：按主题分类的笔记数量和视频/图文比例
 - **TOP 5 高互动笔记**：点赞最多的前5条
 - **核心发现**：博主内容的共性规律和价值主张
+
+### 案例报告
+
+本仓库 `outputs/` 目录下包含 4 份真实生成的案例报告，可作为报告格式和内容深度的参考：
+
+| 案例 | 博主领域 | 报告文件 |
+|------|---------|---------|
+| 邹毅 | 资深策划专家 · 商业地产策划 | [邹毅_资深策划专家_前20条笔记深度总结.md](./outputs/邹毅_资深策划专家_前20条笔记深度总结.md) |
+| Mall先生 | 实体商业观察 · 购物中心分析 | [Mall先生_前20条笔记深度总结.md](./outputs/Mall先生_前20条笔记深度总结.md) |
+| 李晨晨商业更新观察 | 商业空间更新 · 城市更新 | [李晨晨_商业更新观察_前20条笔记深度总结.md](./outputs/李晨晨_商业更新观察_前20条笔记深度总结.md) |
+| 文翰的城市更新实验室 | 城市更新 · 商业空间设计 | [文翰的城市更新实验室_前20条笔记深度总结.md](./outputs/文翰的城市更新实验室_前20条笔记深度总结.md) |
 
 ### 常见问题
 
@@ -172,6 +212,39 @@ You **must install OpenCLI** before using this Skill:
 - **Top 5 High-Engagement Notes**: Posts with most likes/saves
 - **Key Insights**: Common themes and value propositions across the creator's content
 
+### Use Cases
+
+#### 1. Direct Summarization
+
+Summarize all notes or the first N notes of any Xiaohongshu creator.
+
+#### 2. Pre-screening Quality Creators (Most Common)
+
+When you stumble upon a potentially valuable creator, use the Skill as a **lightweight filter** before investing time:
+
+1. **Paste the link** → Ask Agent: "Summarize this creator's first 10 notes"
+2. **Quick review** → In 30 seconds, judge: is this creator's content valuable to me?
+3. **Decide** → If the report's key insights resonate, read the originals deeply
+4. **Ignore** → If quality is mediocre, saved yourself hours of scrolling
+
+**Benefits**:
+- No need to click through notes one by one — use AI summary for **content quality assessment**
+- Quickly judge whether a "hidden gem" creator is worth following long-term
+- Ideal for competitive research, content strategy, learning path planning
+
+#### 3. Competitor Creator Matrix Analysis
+
+- Identify Top 10 creators in a niche → batch-generate reports → compare content strategies
+- Analyze **methodology differences**, **viral patterns**, **monetization paths** across creators
+
+### Example Workflow
+
+```
+Discover creator → Agent summarizes 20 notes → Quick value assessment → Follow or ignore
+     ↓
+    (30 seconds)              (read report)             (decide to dive in)
+```
+
 ### FAQ
 
 | Issue | Solution |
@@ -179,6 +252,17 @@ You **must install OpenCLI** before using this Skill:
 | OpenCLI not installed | Install OpenCLI and load the Chrome extension |
 | Content summary is empty | Adjust search keywords or check proxy settings |
 | Creator has 0 notes | Creator may be new or have private notes |
+
+### Case Studies
+
+The `outputs/` directory contains 4 real-world generated reports demonstrating report format and content depth:
+
+| Case | Niche | Report |
+|------|-------|--------|
+| 邹毅 | Senior Commercial Real Estate Planner | [邹毅_资深策划专家_前20条笔记深度总结.md](./outputs/邹毅_资深策划专家_前20条笔记深度总结.md) |
+| Mall先生 | Physical Retail Observation | [Mall先生_前20条笔记深度总结.md](./outputs/Mall先生_前20条笔记深度总结.md) |
+| 李晨晨商业更新观察 | Commercial Space Renewal | [李晨晨_商业更新观察_前20条笔记深度总结.md](./outputs/李晨晨_商业更新观察_前20条笔记深度总结.md) |
+| 文翰的城市更新实验室 | Urban Renewal & Commercial Design | [文翰的城市更新实验室_前20条笔记深度总结.md](./outputs/文翰的城市更新实验室_前20条笔记深度总结.md) |
 
 ---
 
