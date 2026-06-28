@@ -10,12 +10,11 @@
 
 本 Skill 用于深度总结小红书博主的笔记内容。支持：
 
-- **视频笔记**：通过 OpenCLI 获取 AI 视频内容摘要
-- **图文笔记**：通过 OpenCLI 获取 AI 图文内容解读
-- **混合内容**：同一博主的视频+图文笔记同时分析
+- **视频笔记**：优先用 `note` 获取原文，失败则用 `ask` 搜索视频转录/字幕
+- **图文笔记**：优先用 `note` 获取原文，失败则用 `ask` 搜索图文内容
+- **内容来源标注**：报告中每条笔记标注来源（🟢 note原文 / 🟡 ask搜索），帮助用户判断可信度
 - **进度追踪**：实时记录每条笔记的获取状态，成功率低于阈值时主动提醒
 - **多关键词搜索**：每条笔记自动尝试多组关键词，最大化获取率
-- **批量搜索优化**：5-8条笔记合并为一次搜索，节省 30-50% 的 API 调用
 - **时间线分析**：自动梳理博主的内容演变脉络
 - **跨笔记关联**：识别同主题笔记之间的方法论递进关系
 
@@ -80,11 +79,14 @@
 
 ### 安装方式
 
-#### 方式一：Agent直接安装（推荐）
+#### 方式一：从 GitHub 仓库安装（推荐）
 
-跟你的Agent工具说：
-  ```bash
-npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer  
+```bash
+# 克隆仓库到本地
+git clone https://github.com/chenchenc229/xiaohongshu-summarizer.git
+
+# 将 SKILL.md 复制到 WorkBuddy 用户级 skills 目录
+cp xiaohongshu-summarizer/SKILL.md ~/.workbuddy/skills/xiaohongshu-detector/SKILL.md
 ```
 
 安装完成后，重启 WorkBuddy 或在对话中触发关键词即可使用。
@@ -115,6 +117,12 @@ npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer
    - 确保代理设置正确（通常端口 `7890`）
    - 部分小红书内容需要科学上网访问
 
+### 使用方法
+
+跟你的Agent工具说：
+  ```bash
+npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer  
+```
 
 **触发方式**：在 Agent 对话中说出以下内容即可自动触发此 Skill：
 - "帮我总结这个小红书博主：[链接]"
@@ -125,12 +133,13 @@ npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer
 
 1. **提取博主 UID** — 从小红书主页链接中自动解析
 2. **获取笔记列表** — 调用 `opencli xiaohongshu user <UID>` 获取前N条笔记
-3. **逐条深度总结** — 对每条笔记（视频+图文）调用 `opencli xiaohongshu ask` 获取 AI 内容摘要
+3. **逐条深度总结** — 对每条笔记优先用 `opencli xiaohongshu note <笔记ID>` 获取原文；note 失败则用 `opencli xiaohongshu ask` 搜索
 4. **生成结构化报告** — 输出包含博主档案、笔记列表、核心观点、互动数据分析的完整报告
 
 ### 输出报告内容
 
 - **博主档案**：昵称、ID、简介、专注领域、粉丝数
+- **内容来源标注**：每条笔记标注来源（🟢 note原文 / 🟡 ask搜索 / 🔴 未获取到），帮助用户判断可信度
 - **每条笔记详情**：标题、类型（视频/图文）、互动数据、标签、内容摘要、核心观点
 - **内容分类统计**：按主题分类的笔记数量和视频/图文比例
 - **TOP 5 高互动笔记**：点赞最多的前5条
@@ -169,10 +178,10 @@ npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer
 This Skill performs **discovery and evaluation** of Xiaohongshu (RED / Little Red Book) creators. Use it to quickly assess whether a creator is worth following, then dive deeper into their content.
 
 **Features**:
-- Deep content analysis of video + image notes
+- Priority use `note` for original content, fallback to `ask` search
+- Content source labels: 🟢 note原文 / 🟡 ask搜索 / 🔴 未获取到
 - Progress tracking with success rate monitoring
 - Multi-keyword search strategy for maximum coverage
-- Batch search optimization (saves 30-50% API calls)
 - Timeline analysis + cross-note correlation + methodology extraction
 
 ### Use Cases
@@ -251,6 +260,9 @@ Alternatively, install directly via skills:
 ```bash
 npx skills add https://github.com/chenchenc229/xiaohongshu-summarizer  
 ```
+
+> **Important**: Video notes cannot be directly transcribed. When summarizing video notes, the Skill will use AI search to infer content from titles, descriptions, and related discussions — not actual video transcription.
+
 
 ### Environment Setup
 
